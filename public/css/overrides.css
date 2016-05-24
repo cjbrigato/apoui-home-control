@@ -1,0 +1,140 @@
+@import url(http://fonts.googleapis.com/css?family=Inconsolata);
+
+* > body {
+	background:url(/css/apimgc.png) 95% 80px no-repeat;
+}
+
+body {
+   font-family: 'Inconsolata';
+    color: #222;
+    background-color: #fdfdfd;
+/*    width: 80%; */
+/*    margin: 10%; */
+/*    width: 90%;
+    margin: 5%;*/
+/*    margin-top: 1em; */
+} 
+
+
+h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 17px;
+    margin-bottom: 17px;
+}
+
+pre {
+    display: block;
+    padding: 4.5px;
+    border-radius: 1px;
+}
+
+.h1, h1 {
+	font-size:24px; 
+}
+
+.h2, h2 {
+        font-size:20px;
+}
+
+.row {
+	/*	margin-top: 70px;*/
+}
+
+#documentation {
+	margin-left: 300px;
+}
+
+/* #header {
+	border: 1px solid #ccc;
+	background: black;
+	#ececec;}
+*/
+
+#footer {
+	border: 1px solid #cccccc;
+	bottom: -3px;
+	background: #ececec;
+}
+
+#content {
+	margin-top: 20px;
+}
+.nav > li > a {
+	padding: 10px 8px;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+	text-decoration: none;
+	background-color: #FBFBFB;/*#006CBB;*/
+	color: black;
+}
+
+ul.navbar-nav li a {
+	/*	font-weight: bold;*/
+	/* font-variant: small-caps; */
+	letter-spacing: 1px;
+}
+
+.lo-form {
+	margin-top: 20px;
+	width: 595px;
+}
+
+#Tabs {
+	width: 100%;
+}
+
+#warp {
+	width: 600px;
+	border: 1px solid gray;
+}
+
+pre {
+	font-family: monospace, verdana, arial, sans-serif;
+}
+
+#submenu {
+	display: none;
+}
+
+td, th {
+ /*   border: 1px solid #808080; */
+
+        padding: 5px;
+}
+
+@media screen and (max-width: 767px) {
+	#header {
+		position: relative;
+	}
+	.collapse {
+		display: block;
+		display: none;
+	}
+	.navbar-collapse {
+		max-height: 100%;
+	}
+	#iconOption {
+		width: 100%;
+		top: 0px;
+	}
+	#iconUser {
+		padding: 1%;
+	}
+	.doc {
+		position: relative !important;
+		top: 0px;
+	}
+	#documentation {
+		margin-left: 0px;
+	}
+	#submenu {
+		display: block;
+		font-size: 2em;
+		color: white;
+		padding: 10px 10px 10px 10px;
+		cursor: pointer;
+		width: 12.5%;
+	}
+	#submenu:hover {
+		background-color: #006CBB;
+	}
+}

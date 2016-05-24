@@ -1,0 +1,39 @@
+<h1>MGCPXE.json.humanize : <%= @api_url %></h1>
+
+<p class="project-description">
+Get a DOM node with a human representation of the MAGICPXE-API's JSON.
+</p>
+
+<h2>JSON resource URL</h2>
+<pre>
+<%= base_url %><%= @api_query %>
+</pre>
+
+<div id="output">
+</div>
+
+   <link rel="stylesheet" media="all" href="/css/json.human.css" />
+    <link rel="stylesheet" media="all" href="/css/json.human.over.css" />
+    <link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.16.0/codemirror.css" />
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.16.0/codemirror.min.js"></script>
+<script src="/js/json.human.js"></script>
+<script src="/js/demo.no.requirejs.js"></script>
+
+<script>
+var mgcpxeapi ="<%= @api_query %>";
+var resultjson = $.getJSON ( mgcpxeapi, function (boom) {
+var node = JsonHuman.format(boom, window.options);
+output = document.getElementById("output");
+output.innerHTML = "";
+output.appendChild(node);
+console.log(node);
+});
+resultjson.fail(function (boom) {
+var node = JsonHuman.format(boom.responseJSON, window.options);
+output = document.getElementById("output");
+output.innerHTML = "";
+output.appendChild(node);
+console.log(node);
+});
+</script>

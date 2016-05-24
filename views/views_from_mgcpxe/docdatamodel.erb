@@ -1,0 +1,249 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2><span class="fa fa-database"></span> Data Model</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/web">Home</a>
+                        </li>
+                        <li>
+                            <a>Documentation</a>
+                        </li>
+                        <li class="active">
+                            <strong>Data Model</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+                </div>
+            </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+	<div class="ibox-title">
+                            <h5>Data SQL Model</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                    <div class="ibox-content">
+<textarea id="code1">
+CREATE TABLE servers
+(
+    id INTEGER NOT NULL,
+    subnet_ip VARCHAR(255) NOT NULL,
+    srv_name VARCHAR(255) NOT NULL UNIQUE,
+    srv_ip VARCHAR(255) NOT NULL UNIQUE,
+    mac_addr VARCHAR(255) NOT NULL UNIQUE,
+    is_rescue BOOLEAN DEFAULT 0 NOT NULL,
+    image VARCHAR(255) DEFAULT 'rescue_x86_64' NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (subnet_ip) REFERENCES subnets(subnet_ip) MATCH FULL
+);
+CREATE TABLE subnets
+(
+    id INTEGER NOT NULL,
+    subnet_ip VARCHAR(255) NOT NULL UNIQUE,
+    netmask VARCHAR(255) NOT NULL,
+    tftp_ip VARCHAR(255) DEFAULT '46.21.196.108' NOT NULL,
+    gw_ip VARCHAR(255) NOT NULL UNIQUE,
+    dns_ip VARCHAR(255) DEFAULT '8.8.8.8' NOT NULL,
+    description VARCHAR(255),
+    PRIMARY KEY(id)
+);
+</textarea>
+</div>
+</div>
+</div>
+</div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+	<div class="ibox-title">
+                            <h5>Backend and Models</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                    <div class="ibox-content">
+<textarea id="code2">
+models/init.rb:
+---------------
+require 'sequel'
+DB = Sequel.sqlite('./db/rescue.db')
+Sequel::Model.plugin :json_serializer
+
+require_relative 'server'
+require_relative 'subnet'
+
+models/server.rb:
+-----------------
+class Server < Sequel::Model
+        many_to_one :subnet, :key=>:subnet_ip, :primary_key=>:subnet_ip
+        plugin :validation_helpers
+
+        def validate
+                super
+                validates_presence [:subnet_ip, :srv_name, :srv_ip, :mac_addr, :is_rescue, :image]
+                validates_format /^(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)$/i, [:subnet_ip, :srv_ip], :message=>'is not valid IPv4 Address'
+                validates_min_length 3, :srv_name, :message=>'should be at least 3 characters'
+                validates_max_length 20, :srv_name, :message=>'should be less than 20 characters'
+                validates_format /^([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}$/i, :mac_addr, :message=>'is not valid MAC Address'
+                validates_unique [:srv_name, :srv_ip, :mac_addr]
+        end
+end
+
+models/subnet.rb:
+-----------------
+class Subnet < Sequel::Model
+        one_to_many :servers, :key=>:subnet_ip, :primary_key=>:subnet_ip
+        plugin :validation_helpers
+        def validate
+                super
+                validates_presence [:subnet_ip, :netmask, :tftp_ip, :gw_ip, :dns_ip]
+                validates_format /^(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)$/i, [:subnet_ip, :netmask, :tftp_ip, :gw_ip, :dns_ip], :message=>'is not valid IPv4 Address'
+                validates_unique [:subnet_ip, :gw_ip]
+        end
+end
+</textarea>
+</div>
+</div>
+</div>
+</div>
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+	<div class="ibox-title">
+                            <h5>API Routing</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                    <div class="ibox-content">
+<textarea id="code3">
+routes/api.rb:
+--------------
+namespace '/api' do
+
+	not_found do
+		api_not_found
+	end
+
+	before do
+		content_type :json
+		protect_strategy
+	end
+
+	get '/?' do
+		api_specs
+	end
+
+	namespace '/subnets' do
+
+		before do
+			#placeholder
+		end
+
+		get '/?' do
+			if @q = params[:q]
+				@subnets = Subnet.grep([:subnet_ip, :netmask, :gw_ip, :description], "%#{@q}%", :case_insensitive=>true) or halt 404, resource_not_found
+			else
+               			@subnets = Subnet.all or halt 404, resource_not_found
+			end
+			JSON.pretty_generate(@subnets)
+       		end
+
+		get '/:id' do
+			@subnet = Subnet[params[:id]] or halt 404, resource_not_found
+			JSON.pretty_generate(@subnet)
+		end
+
+		get '/:id/servers' do
+			@servers = Subnet[params[:id]].servers or halt 404, resource_not_found
+			JSON.pretty_generate(@servers)
+		end
+
+	end
+
+	namespace '/servers' do
+
+		before do
+			#placeholder
+		end
+
+		get '/?' do
+			if @q = params[:q]
+				@servers = Server.grep([:srv_ip, :subnet_ip, :srv_name, :mac_addr, :is_rescue, :image], "%#{@q}%", :case_insensitive=>true) or halt 404, resource_not_found
+			else
+				@servers = Server.all or halt 404, resource_not_found
+			end
+			JSON.pretty_generate(@servers)
+		end
+
+		get '/:id' do
+			@server = Server[params[:id]] or halt 404, resource_not_found
+			JSON.pretty_generate(@server)
+		end
+
+		get '/:id/subnet' do
+			@subnet = Server[params[:id]].subnet or halt 404, resource_not_found
+			JSON.pretty_generate(@subnet)
+		end
+
+	end
+
+end
+</textarea>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+<script>
+         $(document).ready(function(){
+
+             var editor_one = CodeMirror.fromTextArea(document.getElementById("code1"), {
+                 lineNumbers: true,
+                 matchBrackets: true,
+                 styleActiveLine: false,
+                 //theme:"ambiance",
+		 readOnly: true
+
+             });
+		var editor_two = CodeMirror.fromTextArea(document.getElementById("code2"), {
+                 lineNumbers: true,
+                 matchBrackets: true,
+                 styleActiveLine: false,
+                 //theme:"ambiance",
+                 readOnly: true
+
+             });
+                var editor_three = CodeMirror.fromTextArea(document.getElementById("code3"), {
+                 lineNumbers: true,
+                 matchBrackets: true,
+                 styleActiveLine: false,
+                 //theme:"ambiance",
+                 readOnly: true
+
+             });
+        });
+    </script>
+

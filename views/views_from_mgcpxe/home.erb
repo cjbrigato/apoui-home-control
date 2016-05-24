@@ -1,0 +1,191 @@
+<div class="row wrapper border-bottom white-bg page-heading">                
+<div class="col-lg-12">
+                    <h2><span class="fa fa-home"></span> Dashboard</h2>
+                    <ol class="breadcrumb">
+			<li>
+                            <a href="/web">Home</a>
+                        </li>
+                        <li class="active">
+                            <strong>Dashboard</strong>
+                        </li>
+                    </ol>
+        </div>
+</div>
+
+<!--END HEADER ROW -->
+
+   <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+	<div class="col-md-4">
+                    <div class="widget navy-bg p-l">
+                                <h2><i class="fa fa-lg fa-gear fa-spin fa-fw"></i>&nbsp; <strong>mgcpxe</strong>.magic.fr</h2>
+<hr>
+                        <ul class="list-unstyled m-t-md">
+                            <li>
+                                <span class="fa fa-server fa-lg m-r-xs"></span>
+                                <label>Hostname:</label>
+                                <%=@hostname%>
+                            </li>
+                            <li>
+                                <span class="fa fa-sitemap fa-lg m-r-xs"></span>
+                                <label>IPv4 Address:</label>
+                                <%= @ip_address%>
+                            </li>
+                            <li>
+                                <span class="fa fa-linux fa-lg m-r-xs"></span>
+                                <label>System:</label>
+                                <%= @system%>
+                            </li>
+                        </ul>
+                    </div>
+		</div>
+<div class="col-md-4">
+                            <div class="ibox-content widget p-l">
+				<h2><i class="fa fa-heartbeat faa-pulse faa-fast animated fa-fw"></i>&nbsp; Quick Health View</h2>
+<div class="row m-t-md">
+<div class="col-md-6">
+                                    <div>
+                                        <span>Disk Space</span>
+                                    <small class="pull-right"><%=@space_used%>/<%=@space_total%></small>
+                                    </div>
+                                   <div class="progress progress-small">
+                                        <div style="width: <%=@space_percent_use%>;" class="progress-bar"></div>
+                                    </div>
+</div>
+<div class="col-md-6">
+                                    <div>
+                                        <span>Memory Usage</span>
+                                        <small class="pull-right">xG/xG</small>
+                                    </div>
+                                    <div class="progress progress-small">
+                                        <div style="width: 50%;" class="progress-bar"></div>
+                                    </div>
+</div>
+</div>
+                                    <div class="m-t-md">
+                                        <span>Cpu Usage</span>
+                                        <small class="pull-right">73%</small>
+                                    </div>
+                                    <div class="progress progress-small">
+                                        <div style="width: 40%;" class="progress-bar"></div>
+                                    </div>
+</div></div>
+<div class="col-md-4">
+                            <div class="ibox-content widget p-l">
+				                                <h2><i class="fa fa-globe faa-pulse faa-fast animated fa-fw"></i>&nbsp; Services Status</h2>
+                                <table class="table table-stripped small m-t-md">
+                                    <tbody>
+                                    <tr>
+                                        <td class="no-borders">
+					    <label>DHCP Status :</label> 
+                                        </td>
+					<td class="text-navy">
+                                             <i class="fa fa-play fa-rotate-270"></i> Up
+                                      <!--  <td  class="no-borders text-danger">
+                                             <i class="fa fa-play fa-rotate-90"></i> Down -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+					     <label>TFTP Status :</label>
+                                        </td>
+					<td class="text-navy">
+                                             <i class="fa fa-play fa-rotate-270"></i> Up
+                                     <!--   <td class="text-danger">
+			                     <i class="fa fa-play fa-rotate-90"></i> Down -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+					     <label>MgcMonitor API  Status :</label>
+                                        </td>
+                                     <!--  <td class="text-danger">
+	                                          <i class="fa fa-play fa-rotate-90"></i> Down -->
+                                        </td>
+					<td class="text-navy">
+                                             <i class="fa fa-play fa-rotate-270"></i> Up
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+                <div class="widget red-bg">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <h2 class="font-bold no-margins"><i class="fa fa-server fa-lg"></i> <%= @total_servers %> </h2>
+                                <h3 class="font-bold">Total Servers</h3>
+                            <small>So much Happy clients!</small>
+                       </div>
+                        <div class="col-md-3 text-center">
+                                <h2 class="font-bold no-margins"><i class="fa fa-sitemap fa-lg"></i> <%= @total_subnets %> </h2>
+                                <h3 class="font-bold">Total Subnets</h3>
+                           <small>So many Vlans</small>
+                        </div>
+                        <div class="col-md-3 text-center">
+                                <h2 class="font-bold no-margins"><i class="fa fa-picture-o fa-lg"></i> <%= @total_images %> </h2>
+                                <h3 class="font-bold">PXE Images</h3>
+                           <small>So much choice !</small>
+                        </div>
+                        <div class="col-md-3 text-center">
+                                <h2 class="font-bold no-margins"><i class="fa fa-random fa-lg"></i> <%= @total_is_rescue %> </h2>
+                                <h3 class="font-bold">PXE Booters</h3>
+                           <small>So much luckies !</small>
+                        </div>
+                    </div>
+                </div>
+</div>
+</div>
+
+
+        <div class="row">
+<div class="col-lg-4">
+                <div class="widget green-bg text-center">
+                    <div class="row">
+                        <div class="col-xs-4 faa-parent animated-hover">
+                            <i class="fa fa-clock-o faa-bounce fa-5x"></i>
+                        </div>
+                        <div class="col-xs-8">
+				<h2 class="m-xs"><%=@uptime%></h2>
+                            <h3 class="font-bold no-margins">Total Uptime</h3>
+                            <small>It's a Performance !</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-lg-4">
+ <div class="widget yellow-bg text-center">
+	<div class="row">
+				<div class="col-xs-4 faa-parent animated-hover">
+				<i class="fa fa-exclamation-triangle faa-flash fa-5x"></i>
+				</div>
+<div class="col-xs-8">
+                            <h2 class="m-xs"><%=@dmesg_lines%></h2>
+                            <h3 class="font-bold no-margins">~$dmesg entries</h3>
+				<small>should be cleared.</small>
+</div>
+                        </div>
+			</div>
+                    </div>
+   <div class="col-lg-2 pull-right">
+
+                <div class="widget style1">
+                <div class="row">
+                            <div class="col-xs-4 text-center faa-parent animated-hover">
+                                <i class="fa fa-thumbs-up faa-tada fa-5x"></i>
+                            </div>
+                            <div class="col-xs-8 text-center">
+                                <span> On est </span>
+                                <h3 class="font-bold">SUPER BON</h3>
+                            </div>
+</div>
+                </div>
+                </div>
+    </div>
+
+            </div>
+</div>

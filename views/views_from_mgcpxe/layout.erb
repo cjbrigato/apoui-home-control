@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= title %></title>
+
+    <link href="/spinstyle/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/spinstyle/font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link href="/spinstyle/font-awesome/css/font-awesome-animation.min.css" rel="stylesheet">
+    <link href="/spinstyle/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/spinstyle/css/animate.css" rel="stylesheet">
+    <link href="/spinstyle/css/style.css" rel="stylesheet">
+    <link href="/spinstyle/css/awesome_checkbox.css" rel="stylesheet">
+      <link rel="stylesheet" href="/octicons/octicons.css">
+
+
+
+    <!-- Sweetaler -->
+    <link href="/spinstyle/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <script src="/spinstyle/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Mainly scripts -->
+    <script src="/spinstyle/js/jquery-2.1.1.js"></script>
+    <script src="/spinstyle/js/jquery-ui.js"></script>
+    <link href="/spinstyle/css/jquery-ui.css" rel="stylesheet">
+    <script src="/spinstyle/js/bootstrap.min.js"></script>
+    <script src="/spinstyle/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <script src="/spinstyle/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<!--    <script src="/spinstyle/js/plugins/validate/dist/jquery.validate.min.js"></script>
+    <script src="/spinstyle/js/plugins/validate/dist/additional-methods.min.js"></script>
+WE NOW MAKE VALIDATION AT SERVER SIDE ON MODEL DEFINITION !!!!!   -->
+
+  <!-- Footables -->
+  <script src="/spinstyle/js/plugins/footable/footable.all.min.js"></script>
+  <link href="/spinstyle/css/plugins/footable/footable.core.css" rel="stylesheet">
+
+  <!-- Codemirror -->
+     <!-- CodeMirror -->
+    <script src="/spinstyle/js/plugins/codemirror/codemirror.js"></script>
+    <script src="/spinstyle/js/plugins/codemirror/mode/javascript/javascript.js"></script>
+  <link href="/spinstyle/css/plugins/codemirror/codemirror.css" rel="stylesheet">
+    <link href="/spinstyle/css/plugins/codemirror/ambiance.css" rel="stylesheet">
+
+   <!-- Datatables -->
+<!--    <link rel="stylesheet" href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
+<script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+-->
+     <script src="/spinstyle/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/spinstyle/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/spinstyle/js/plugins/dataTables/dataTables.responsive.js"></script>
+    <script src="/spinstyle/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+
+
+<style type="text/css">
+.dataTables_filter {
+display: none;
+}
+</style>
+
+
+</head>
+<body class="top-navigation">
+
+
+    <div id="wrapper">
+        <div id="page-wrapper" >
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <i class="fa fa-reorder"></i>
+                </button>
+                <a href="/web/" class="navbar-brand">MGCpxe</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/web"><span class="fa fa-home"></span> Dashboard</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-puzzle-piece"></span> Resources<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+                            <li>
+                                <a href="/web/servers"><span class="fa fa-server"></span> Servers</a>
+                            </li>
+                            <li>
+                                <a href="/web/subnets"><span class="fa fa-sitemap"></span> Subnets</a>
+                            </li>
+				            <li role="separator" class="divider"></li>
+                            </li>
+			    <li>
+                                <a href="#"><span class="fa fa-picture-o"></span> Images</a>
+                            </li>
+			</ul>
+			</li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-wrench"></span> Maintenance<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                            <li>
+                                <a href="#"><span class="fa fa-code-fork"></span> Database Statistics</a>
+                            </li>
+                            <li>
+                                <a href="/monitor/web" onClick="return popup(this, 'notes')"><span class="fa fa-bar-chart"></span> Magic Monitor</a>
+
+                            </li>
+			</ul>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-cog"></span> Admin<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                           <li>
+                                <a href="/web/users"><span class="fa fa-users"></span> Users</a>
+                            </li>
+                            <li>
+                                <a href="/web/acls"><span class="fa fa-shield"></span> ACLs Strategy</a>
+                            </li>
+                        </ul>
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-book"></span> Documentation<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                            <li>
+                                <a href="/web/documentation/general"><span class="fa fa-book"></span> General</a>
+                            </li>
+                            <li>
+                                <a href="/web/documentation/datamodel"><span class="fa fa-database"></span> Data Model</a>
+                            </li>
+                        </ul>
+                            <li>
+                                <a href="/web/about"><span class="fa fa-university" title="A propos"></span> About</a>
+                            </li>
+			    <li>
+<a href="/web/updatedhcpd" style="font-weight: 500; color: #ed5565 !important;" onClick="return prodpopup(this, 'notes')">
+<span class="fa fa-send-o fa-lg" style="font-weight: 500!important;"></span> Push Now!</a>
+                            </li>
+         		<!--	<li>
+                                                <form id="search" action="/web/search">
+                                    <input type="text" name="query" id="search" placeholder="search by target" class="form-control search">
+					</form>
+                                </li> -->
+                        </ul>
+                            <ul class="nav navbar-nav navbar-right">
+				<li>
+				<a href="/web/users?<%= @me_username %>"><span class="fa fa-user"></span> <%= @me_name %> (
+<% if @is_admin == true %>
+Admin
+<% elsif @is_operator == true %>
+Operator
+<% else %>
+User
+<% end %>
+)</a>
+				</li>
+                                <li>
+                                    <a role="menuitem" href="/logout"><span class="fa fa-sign-out"></span> Log Out<%= session[:login]%></a>
+                                </li>
+                            </ul>
+                    </nav>
+                </div>
+
+                <%= yield %>
+
+        <div class="footer fixed">
+            <div class="pull-right">
+                <strong>MGCPxe over MGCore par </strong>Colin J. Brigato.
+            </div>
+            <div>
+                <strong>Copyright</strong> Magic Online &copy; 2014-2015
+            </div>
+        </div>
+
+        </div>
+        </div>
+
+
+
+
+    <!-- Peity -->
+    <script src="/spinstyle/js/plugins/peity/jquery.peity.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/spinstyle/js/inspinia.js"></script>
+    <script src="/spinstyle/js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="/spinstyle/js/plugins/iCheck/icheck.min.js"></script>
+
+
+
+    <!-- Peity -->
+    <script src="/spinstyle/js/demo/peity-demo.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+<script type="text/javascript">
+function popup(mylink, windowname)
+{
+if (! window.focus)return true;
+var href;
+if (typeof(mylink) == 'string')
+   href=mylink;
+else
+   href=mylink.href;
+window.open(href, windowname, 'width=750,height=600,location=no,scrollbars=yes');
+return false;
+}
+function prodpopup(mylink, windowname)
+{
+if (! window.focus)return true;
+var href;
+if (typeof(mylink) == 'string')
+   href=mylink;
+else
+   href=mylink.href;
+window.open(href, windowname, 'width=595,height=750,location=no,scrollbars=yes');
+return false;
+}
+</script>
+
+</body>
+
+</html>

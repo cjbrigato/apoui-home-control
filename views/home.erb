@@ -1,0 +1,112 @@
+<div class="row wrapper border-bottom white-bg page-heading animated slideInRight">                
+<div class="col-lg-12">
+                    <h2><span class="fa fa-th-large"></span> Dashboard</h2>
+                    <ol class="breadcrumb">
+			<li>
+                            <a class="transit" href="/">Home</a>
+                        </li>
+                        <li class="active">
+                            <strong>Dashboard</strong>
+                        </li>
+                    </ol>
+        </div>
+</div>
+
+<!--END HEADER ROW -->
+
+   <div class="wrapper wrapper-content">
+<div class="row">
+	<div class="col-lg-12 animated slideInRight">
+                    <div class="widget navy-bg p-l">
+                                <h2><i class="fa fa-lg fa-gear fa-spin fa-fw"></i>&nbsp; <strong>control</strong>.maison</h2>
+<hr>
+                        <ul class="list-unstyled m-t-md">
+                            <li>
+                                <span class="fa fa-server fa-lg m-r-xs"></span>
+                                <label>Hostname:</label>
+                                <%=@hostname%>.maison.apoui.net
+                            </li>
+                            <li>
+                                <span class="fa fa-sitemap fa-lg m-r-xs"></span>
+                                <label>IPv4 Address:</label>
+                                <%= @ip_address%>
+                            </li>
+                            <li>
+                                <span class="fa fa-linux fa-lg m-r-xs"></span>
+                                <label>System:</label>
+                                <%= @system%>
+                            </li>
+                        </ul>
+                    </div>
+		</div>
+</div>
+<div class="row">
+<div class="col-lg-12 animated slideInLeft">
+                <div class="widget red-bg">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2 class="font-bold no-margins"><i class="fa fa-server fa-lg"></i> <%= @total_controllers %> </h2>
+                                <h3 class="font-bold">Total Controllers</h3>
+                            <small>So much Automation!</small>
+                       </div>
+			</div><br/>
+			<div class="row">
+                        <div class="col-md-12 text-center">
+                                <h2 class="font-bold no-margins"><i class="fa fa-sitemap fa-lg"></i> <%= @total_relays %> </h2>
+                                <h3 class="font-bold">Total Relays</h3>
+                           <small>So many PouiPoui!</small>
+                        </div>
+                    </div>
+                </div>
+</div>
+</div>
+
+
+        <div class="row">
+<div class="col-lg-12 animated slideInRight">
+                <div class="widget green-bg text-center animated slideInRight">
+                    <div class="row">
+                        <div class="col-xs-4 faa-parent animated-hover">
+                            <i class="fa fa-clock-o faa-bounce fa-5x"></i>
+                        </div>
+                        <div class="col-xs-8">
+				<h2 class="m-xs"><%=@uptime%></h2>
+                            <h3 class="font-bold no-margins">Total Uptime</h3>
+                            <small>It's a Performance !</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-lg-12">
+ <div class="widget yellow-bg text-center">
+	<div class="row">
+				<div class="col-xs-4 faa-parent animated-hover">
+				<i class="fa fa-exclamation-triangle faa-flash fa-5x"></i>
+				</div>
+<div class="col-xs-8">
+                            <h2 class="m-xs"><%=@dmesg_lines%></h2>
+                            <h3 class="font-bold no-margins">~$dmesg entries</h3>
+				<small>should be cleared.</small>
+</div>
+                        </div>
+			</div>
+</div>
+   <div class="col-lg-12 animated slideInRight">
+                 <div class="row">
+                <div class="widget bg-navy">
+                            <div class="col-xs-4 text-center faa-parent animated-hover">
+                                <i class="fa fa-thumbs-up faa-tada fa-5x"></i>
+                            </div>
+                            <div class="col-xs-8 text-center">
+                                <span> Les Briganious </span>
+                                <h4 class="font-bold">C'EST NOUS !</h4>
+                            </div>
+</div>
+                </div>
+ 
+                </div>
+    </div>
+
+            </div>
+</div>
+</div>

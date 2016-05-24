@@ -1,0 +1,69 @@
+<div class="row wrapper border-bottom white-bg page-heading animated slideInLeft">
+                <div class="col-lg-10">
+                    <h2><span class="fa fa-send"></span> Relay Control</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a class="transit" href="/">Home</a>
+                        </li>
+                        <li class="active">
+                            <strong>Relay Control</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+                </div>
+            </div>
+       <div class="wrapper wrapper-content animated slideInRight">
+<!--        <div class="wrapper wrapper-content"> -->
+<div class="row">
+  <% @relays.each do |relay| %>
+<div id="divrelay<%=relay.id%>" class="col-lg-12 animated slideInRight" onClick="return switchrelay(<%= relay.id %>)">
+ <% if `curl http://#{relay.masterip}/#{relay.localname}/status` == "ON" %>
+                <div class="widget yellow-bg text-center">
+ <% elsif `curl http://#{relay.masterip}/#{relay.localname}/status` == "OFF" %>
+                <div class="widget gray-bg text-center">
+ <%end%>
+                    <div class="row">
+                        <div class="col-xs-4 faa-parent animated slideInRight">
+                            <i class="fa fa-lightbulb-o fa-5x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <h3 class="font-bold no-margins"><%= relay.name %></h3>
+                            <small><%= relay.description %></small>
+			  <h2 class="m-xs"><strong><%=`curl http://#{relay.masterip}/#{relay.localname}/status`%></strong></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+function setrelay(myrelay, mystatus)
+{
+var baseurl = "/setrelay/"
+var url = baseurl.concat(myrelay,"/",mystatus)
+$.get(url,{},function cback() { window.location.reload(false);});
+}
+function switchrelay(myrelay)
+{
+var mydiv = $('#divrelay'+myrelay)
+var baseurl = "/switchrelay/"
+var url = baseurl.concat(myrelay)
+
+$.get(url,{},function cback() { 
+var baseurl2 = "/onerelay/"
+var url2 = baseurl2.concat(myrelay)
+      mydiv.load(url2);
+});
+}
+</script>

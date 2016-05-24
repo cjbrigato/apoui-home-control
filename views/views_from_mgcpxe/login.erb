@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MGCPXE API v2 | Login</title>
+
+    <link href="/spinstyle/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/spinstyle/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/spinstyle/css/animate.css" rel="stylesheet">
+    <link href="/spinstyle/css/style.css" rel="stylesheet">
+
+</head>
+
+<!--<body class="gray-bg hero-unit"> -->
+<body class="gray-bg">
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+                <!-- <h1 class="logo-name">Mgc|pxe</h1> -->
+			<h2><img class="logologin" src="/css/apimgc.png"/></h2>
+            </div>
+            <h2>MGCpxe v2</h2>
+            <p>Login Using your API KEY</p>
+              <!-- <form class="m-t" role="form" action="/login">-->
+                <form method="POST" action ="/login" role="form" class="lo-form" id="api_key">
+                <div class="form-group">
+                <div class="form-group">
+                    <input type="password" name="api_key" class="form-control" placeholder="Api Key" required="">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+                <a role="button" data-toggle="modal" data-target="#api-key-modal" href="#" ><small>Forgot Api Key?</small></a>
+                <p class="text-muted text-center"><small>Do not have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="mailto:colin.brigato@magic.fr">Send a Mail</a>
+            </form>
+            <p class="m-t"> <small>Colin J. Brigato for Magic Online &copy; 2015</small> </p>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="/spinstyle/js/jquery-2.1.1.js"></script>
+    <script src="/spinstyle/js/bootstrap.min.js"></script>
+
+<!-- BEGIN # MODAL LOGIN -->
+   <script src="/modal/modal.login.js"></script>
+    <link href="/modal/modal.login.css" rel="stylesheet">
+<div class="modal fade" id="api-key-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" align="center">
+					<img class="img-circle" id="img_logo"  width="64" height="64" src="/mgcpxe/img/api_key.png">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span class="fa fa-times" aria-hidden="true"></span>
+					</button>
+					<br/>Lost API Key
+				</div>
+                
+                <!-- Begin # DIV Form -->
+                <div id="div-forms">
+                
+                    <!-- Begin # Login Form -->
+                    <form id="login-form">
+		                <div class="modal-body">
+				    		<div id="div-login-msg">
+                                <div id="icon-login-msg" class="fa fa-chevron-right"></div>
+                                <span id="text-login-msg">Type your Username and Cipher</span>
+                            </div>
+				    		<input id="login_username" class="form-control" type="text" placeholder="Username" required>
+				    		<input id="login_cipher" class="form-control" type="password" placeholder="Cipher" required>
+        		    	</div>
+				        <div class="modal-footer">
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-block m-b">Show me the Magic</button>
+                            </div>
+				        </div>
+                    </form>
+		    <form id ="result-form" style="display:none;">
+            		    <div class="modal-body">
+		    				<div id="div-register-msg">
+                                <div id="icon-register-msg" class="fa fa-chevron-right"></div>
+                                <span id="text-register-msg">Your api key :</span>
+				<pre id="keyresult"></pre>
+                            </div>
+		    		    <div class="modal-footer">
+                            <div>
+				<button type="button" id="return-key-btn" class="btn btn-primary btn-block m-b">Reset</button>
+                            </div>
+		    		    </div>
+                    </form>
+                    <!-- End # Login Form -->
+                </div>
+                <!-- End # DIV Form -->
+                
+			</div>
+		</div>
+	</div>
+    <!-- END # MODAL LOGIN -->
+
+
+</body>
+
+</html>
+

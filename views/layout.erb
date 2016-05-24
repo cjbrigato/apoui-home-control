@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= title %></title>
+
+    <link href="/spinstyle/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/spinstyle/font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link href="/spinstyle/font-awesome/css/font-awesome-animation.min.css" rel="stylesheet">
+    <link href="/spinstyle/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/spinstyle/css/animate.css" rel="stylesheet">
+    <link href="/spinstyle/css/style.css" rel="stylesheet">
+    <link href="/spinstyle/css/awesome_checkbox.css" rel="stylesheet">
+      <link rel="stylesheet" href="/octicons/octicons.css">
+
+
+
+    <!-- Sweetaler -->
+    <link href="/spinstyle/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <script src="/spinstyle/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Mainly scripts -->
+    <script src="/spinstyle/js/jquery-2.1.1.js"></script>
+    <script src="/spinstyle/js/jquery-ui.js"></script>
+    <link href="/spinstyle/css/jquery-ui.css" rel="stylesheet">
+    <script src="/spinstyle/js/bootstrap.min.js"></script>
+    <script src="/spinstyle/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <script src="/spinstyle/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<!--    <script src="/spinstyle/js/plugins/validate/dist/jquery.validate.min.js"></script>
+    <script src="/spinstyle/js/plugins/validate/dist/additional-methods.min.js"></script>
+WE NOW MAKE VALIDATION AT SERVER SIDE ON MODEL DEFINITION !!!!!   -->
+
+  <!-- Footables -->
+  <script src="/spinstyle/js/plugins/footable/footable.all.min.js"></script>
+  <link href="/spinstyle/css/plugins/footable/footable.core.css" rel="stylesheet">
+
+  <!-- Codemirror -->
+     <!-- CodeMirror -->
+    <script src="/spinstyle/js/plugins/codemirror/codemirror.js"></script>
+    <script src="/spinstyle/js/plugins/codemirror/mode/javascript/javascript.js"></script>
+  <link href="/spinstyle/css/plugins/codemirror/codemirror.css" rel="stylesheet">
+    <link href="/spinstyle/css/plugins/codemirror/ambiance.css" rel="stylesheet">
+
+   <!-- Datatables -->
+<!--    <link rel="stylesheet" href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
+<script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+-->
+     <script src="/spinstyle/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/spinstyle/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/spinstyle/js/plugins/dataTables/dataTables.responsive.js"></script>
+    <script src="/spinstyle/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+
+
+<style type="text/css">
+.dataTables_filter {
+display: none;
+}
+</style>
+
+
+</head>
+<body class="top-navigation">
+
+
+    <div id="wrapper">
+        <div id="page-wrapper" >
+        <div class="row border-bottom">
+        <nav class="navbar navbar-fixed-top" role="navigation">
+            <div class="navbar-header animated slideInLeft ">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <i class="fa fa-reorder"></i>
+                </button>
+                <a href="/" class="transit navbar-brand"><img src="/logos/logoheader3.png" /></a>
+            </div>
+            <div style="text-align: center;" class="navbar-collapse collapse animated slideInRight" id="navbar">
+      <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/" class="transit" ><span class="fa fa-th-large"></span> Dashboard</a>
+                            </li>
+                            <li>
+                                <a class="transit" href="/relaycontrol" style="font-weight: 500; color: #ed5565 !important;" ><span class="fa fa-send"></span> Relay Control</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="fa fa-home"></span> "In House" View</a>
+                            </li>
+			    <li>
+                                <a href="#"><span class="fa fa-puzzle-piece"></span> ESP Controllers</a>
+                            </li>
+                            <li>
+                                <a class="transit" href="/relays"><span class="fa fa-sitemap"></span> Relays</a>
+                            </li>
+			</ul>
+			</li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <%= yield %>
+
+        <div class="footer">
+            <div class="pull-right">
+		<strong>&copy;</strong> Briganious 2016
+            </div>
+            <div>
+    <strong>APOUI! - </strong>Home Control by <a href="http://www.brigato.fr">C.J.B</a>
+                
+            </div>
+        </div>
+
+        </div>
+        </div>
+
+
+
+
+    <!-- Peity -->
+    <script src="/spinstyle/js/plugins/peity/jquery.peity.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/spinstyle/js/inspinia.js"></script>
+    <script src="/spinstyle/js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="/spinstyle/js/plugins/iCheck/icheck.min.js"></script>
+
+
+
+    <!-- Peity -->
+    <script src="/spinstyle/js/demo/peity-demo.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+<script type="text/javascript">
+function popup(mylink, windowname)
+{
+if (! window.focus)return true;
+var href;
+if (typeof(mylink) == 'string')
+   href=mylink;
+else
+   href=mylink.href;
+window.open(href, windowname, 'width=750,height=600,location=no,scrollbars=yes');
+return false;
+}
+function prodpopup(mylink, windowname)
+{
+if (! window.focus)return true;
+var href;
+if (typeof(mylink) == 'string')
+   href=mylink;
+else
+   href=mylink.href;
+window.open(href, windowname, 'width=595,height=750,location=no,scrollbars=yes');
+return false;
+
+}
+
+
+$(document).ready(function() {
+
+$('body').css('display', 'none');
+
+$('body').fadeIn(300);
+
+$('.transit').click(function() {
+
+event.preventDefault();
+
+newLocation = this.href;
+
+$('body').fadeOut(250, newpage);
+
+});
+
+function newpage() {
+
+window.location = newLocation;
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>

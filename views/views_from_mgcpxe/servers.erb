@@ -1,0 +1,401 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2><span class="fa fa-server"></span> Servers</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/web">Home</a>
+                        </li>
+                        <li>
+                            <a>Resources</a>
+                        </li>
+                        <li class="active">
+                            <strong>Servers</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+                </div>
+            </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+  <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Search Options</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <form class="form-horizontal" action="#" method="get">
+<div class="form-group"><label class="col-lg-1 control-label">Query<br><small class="text-danger">Limit 300</small></label>
+<div class="col-lg-11"><input name="q" type="text" placeholder='Anything like "srv1379", "78.41.237", "rescue_x", "tedemis", etc... this is Global Search Magic !' class="form-control">
+<span class="help-block m-b-none">Limited to 300 Results. Please Refine Query if needed or use the JSON API for Unlimited or Complex Queries.</span>
+</div></div>		
+<div class="form-group"><label class="col-lg-1 control-label">Rescue<br><small class="text-navy"></small></label>
+<div class="col-lg-11">
+<select class="form-control m-b" name="is_rescue">
+                                        <option value="any" selected >ANY</option>
+                                        <option value="onmbr" >MBR</option>
+                                        <option value="onrescue" >RESCUE</option>
+</select>
+</div></div>
+<div class="form-group">
+<div class="col-lg-4">
+<input type="hidden" name="do" value="yes">
+                                        <button type="submit" class="btn btn btn-primary"> <i class="fa fa-search"></i> Search</button>
+                        </form>
+<!-- BEGIN MODAL DELETESERVER -->
+<div class="modal inmodal fade" id="ModalDel" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+<i class="fa fa-trash-o modal-icon-danger"></i> <i class="fa fa-server modal-icon"></i>
+<h4 class="modal-title">Delete a Server</h4>
+<small class="font-bold">We'll never forget him :'(</small>
+</div>
+<div class="modal-body">
+<h3>Type the <strong>exact name</strong> of the server</h3>
+<div class="form-group">
+<form id="delserv1" action="/web/servers" method="post">
+<input type="hidden" name="_method" value="delete" />
+<label>Name</label>
+<input type="text" name="srv_name" placeholder="srvXXXX" class="form-control" value="">
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+<button type="submit" class="btn btn-primary">Delete !</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!-- END MODAL DELETESERVER -->
+
+
+<!-- BEGIN MODAL NEWSERVER -->
+<div class="modal inmodal fade" id="ModalNew" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+<i class="fa fa-heart modal-icon-danger"></i> <i class="fa fa-server modal-icon"></i>
+<h4 class="modal-title">Add a New Server</h4>
+<small class="font-bold">Long live to the new one !</small>
+</div>
+<div class="modal-body">
+
+<div class="form-group">
+<form id="newserv1" action="/web/servers" method="post">
+<label>Name</label>
+<input type="text" name="srv_name" placeholder="srvXXXX" class="form-control" value="">
+</div>
+<div class="form-group">
+<label>IP Address</label>
+<input type="text" name="srv_ip" placeholder="42.42.42.42" class="form-control" value="">
+</div>
+<div class="form-group">
+<label>Network Address</label>
+<input type="text" name="subnet_ip" placeholder="42.42.42.0" class="form-control" value="">
+</div>
+<div class="form-group">
+<label>MAC Address</label>
+<input type="text" name="mac_addr" placeholder="ca:fe:de:ad:be:af" class="form-control" value="">
+</div>
+<div class="form-group">
+<label>Rescue Mode</label>
+<select class="form-control" name="is_rescue">
+                                        <option value="false" selected="selected" >MBR</option>
+                                        <option value="true" >RESCUE</option>
+</select>
+</div>
+<div class="form-group">
+<label>Image File</label>
+<input id="imgsnew" type="text" name="image" placeholder="rescue_x86_64" class="form-control" value="rescue_x86_64">
+</div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+<button type="submit" class="btn btn-primary">Add !</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!-- END MODAL NEWSERVER -->
+
+
+
+
+
+
+</div>
+                                </div>
+                        </div>
+</div>
+                    </div>
+                </div>
+<div class="row">
+                <div class="col-md-9">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <h2>Request Results</h2>
+<div class="table-responsive">
+<table class="footable table table-stripped toggle-arrow-tiny" data-page-size="5">
+		<thead>
+                        <tr>
+                            <th data-toggle="true">Name</th>
+                            <th>IP Address</th>
+                            <th data-hide="all">Network Address</th>
+                            <th data-hide="all">MAC Address</th>
+                            <th>Rescue Mode</th>
+                            <th data-hide="all">Image File</th>
+			    <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+<% if @do == "yes" %>
+<% @servers.each do |server| %>
+<tr>
+<td><i class="fa fa-server"></i> <strong><%= server.srv_name %></strong></td>
+<td><%= server.srv_ip %></td>
+<td><a href="/web/servers?q=<%= server.subnet_ip %>&do=yes"><%= server.subnet_ip %></a></td>
+<td><%= server.mac_addr %></td>
+<td>
+<%= 
+if server.is_rescue
+	'<span class="label label-danger col-sm-4">RESCUE</span>'
+else
+	'<span class="label label-primary col-sm-4">MBR</span>'
+end
+ %> 
+</td>
+<td><a href="/web/servers?q=<%= server.image %>&do=yes"><%= server.image %></a></td>
+<td>
+<a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Modal<%= server.id %>"><i class="fa fa-pencil-square-o"></i> Edit </a>  <a href="/web/subnets?q=<%= server.subnet_ip %>&do=yes" class="btn btn-default btn-sm"><i class="fa fa-sitemap"></i> To Subnet </a>
+<!-- BEGIN MODAL VIEW -->
+<div class="modal inmodal fade" id="Modal<%= server.id %>" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+<i class="fa fa-server modal-icon"></i>
+<h4 class="modal-title">Server <%= server.srv_name %></h4>
+<small class="font-bold">View / Edit / Delete</small>
+</div>
+<div class="modal-body">
+
+<div class="form-group">
+<form id="updateserv<%=server.id%>" action="/web/servers/<%= server.id %>" method="post">
+<input type="hidden" name="_method" value="put" />
+<label>Name</label> 
+<input type="text" name="srv_name" placeholder="Enter text" class="form-control" value="<%= server.srv_name %>" required>
+</div>
+<div class="form-group">
+<label>IP Address</label>
+<input type="text" name="srv_ip" placeholder="Enter text" class="form-control" value="<%= server.srv_ip %>" required>
+</div>
+<div class="form-group">
+<label>Network Address</label>
+<input type="text" name="subnet_ip" placeholder="Enter text" class="form-control" value="<%= server.subnet_ip %>" required>
+</div>
+<div class="form-group">
+<label>MAC Address</label>
+<input type="text" name="mac_addr" placeholder="Enter text" class="form-control" value="<%= server.mac_addr %>" required>
+</div>
+<div class="form-group">
+<label>Rescue Mode</label>
+<select class="form-control" name="is_rescue" value=<%= server.is_rescue %>>
+<% if server.is_rescue == true %>
+					<option value="false">MBR</option>
+                                        <option value="true" selected="selected" >RESCUE</option>
+<% else %>
+                                        <option value="false" selected="selected" >MBR</option>
+                                        <option value="true" >RESCUE</option>
+<% end %>
+</select>
+</div>
+<div class="form-group">
+<label>Image File</label>
+<input id="imgsupd" type="text" name="image" placeholder="Enter text" class="form-control" value="<%= server.image %>" required>
+</div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+<button type="submit" class="btn btn-primary">Update !</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!-- END MODAL SERVERID -->
+</td>
+    </tr>
+  <% end %>
+<% end %>
+</tbody>
+ <tfoot>
+                                <tr>
+                                    <td colspan="4">
+                                        <ul class="pagination pull-left"></ul>
+                                    </td>
+                                </tr>
+                                </tfoot>
+
+</table>   
+</div>
+</div>
+</div>
+</div>
+<!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function() {
+            $('.footable').footable();
+		$('.modal').on('hidden.bs.modal', function(e)
+    { 
+        $(this).removeData();
+    }) ;
+        });
+    </script>
+    <script>
+        document.querySelector('#delserv1').addEventListener('submit', function(e) {
+            var form = this;
+            e.preventDefault();
+            swal({
+                title: "Are you sure?",
+                text: "Delete Permanently this Server?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Yes, I am sure!',
+                cancelButtonText: "No, cancel it!",
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true,
+                closeOnCancel: false,
+                confirmLoadingButtonColor: '#DD6B55'
+
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Deleted!',
+                        text: 'Server Has been Deleted!',
+                        type: 'success'
+                    }, function() {
+                        form.submit();
+                    });
+
+                } else {
+                    swal("Cancelled", "Good. Better Safe than Sorry :)", "error");
+                }
+            });
+        });
+
+        document.querySelector('#newserv1').addEventListener('submit', function(e) {
+            var form = this;
+            e.preventDefault();
+            swal({
+                title: "Are you sure?",
+                text: "Add this new Server?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Yes, I am sure!',
+                cancelButtonText: "No, cancel it!",
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true,
+                closeOnCancel: false,
+                confirmLoadingButtonColor: '#DD6B55'
+
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Updated!',
+                        text: 'Server Added!',
+                        type: 'success'
+                    }, function() {
+                        form.submit();
+                    });
+
+                } else {
+                    swal("Cancelled", "Good. Better Safe than Sorry :)", "error");
+                }
+            });
+        });
+<% if @do == "yes" %>
+
+<% @servers.each do |server| %>
+        document.querySelector('#updateserv<%=server.id%>').addEventListener('submit', function(e) {
+            var form = this;
+            e.preventDefault(); 
+            swal({
+                title: "Are you sure?",
+                text: "Are you sure you want to do this?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Yes, I am sure!',
+                cancelButtonText: "No, cancel it!",
+                closeOnConfirm: false,
+		showLoaderOnConfirm: true, 
+                closeOnCancel: false,
+	 	confirmLoadingButtonColor: '#DD6B55'
+
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Updated!',
+                        text: 'Server Info Updated!',
+                        type: 'success'
+                    }, function() {
+                        form.submit();
+                    });
+                    
+                } else {
+                    swal("Cancelled", "Good. Better Safe than Sorry :)", "error");
+                }
+            });
+        });
+	<%end%>
+<%end%>
+	</script>
+
+  <script>
+  $(function() {
+    var availableImages = [
+	<%=@images%>
+    ];
+    $( "#imgsnew" ).autocomplete({
+      source: availableImages
+    });
+    $( "#imgsupd" ).autocomplete({
+      source: availableImages
+    });
+  });
+  </script>
+
+
+
+<!-- ACTIONS -->
+                <div class="col-md-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <h2>CRUD Operations</h2>
+                        <p>Be careful. We love our servers.</p>
+                        <button type="button" class="btn btn btn-success" data-toggle="modal" data-target="#ModalNew"><i class="fa fa-upload"></i> Add Server </button>
+<button type="button" class="btn btn btn-danger" data-toggle="modal" data-target="#ModalDel"><i class="fa fa-trash-o"></i> Erase Server </button>
+        </div>
+        </div>
+<!-- END ACTIONS -->
+</div>
+</div>
+</div>
+        </div>

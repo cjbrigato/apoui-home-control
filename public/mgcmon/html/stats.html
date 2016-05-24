@@ -1,0 +1,77 @@
+
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h2>This is main title</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="index.html">This is</a>
+                        </li>
+                        <li class="active">
+                            <strong>Breadcrumb</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-sm-8">
+                    <div class="title-action">
+                        <a href="" class="btn btn-primary">This is action area</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content animated fadeInRight">
+
+<div ng-show="!dataLoaded" class="container-fluid" id="loading-page">
+    <div class="glances-logo"></div>
+    <div class="loader">Loading...</div>
+</div>
+
+<div ng-show="help_screen" class="container-fluid" ng-include src="'/mgcmon/html/help.html'"></div>
+
+<div ng-show="dataLoaded && !help_screen" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pull-left">
+                <section id="system" class="plugin" ng-include src="'/mgcmon/html/plugins/system.html'"></section>
+            </div>
+            <div class="pull-left">
+                <section id="ip" class="plugin" ng-if="statsIp.address != undefined" ng-include src="'/mgcmon/html/plugins/ip.html'"></section>
+            </div>
+            <div class="pull-right">
+                <section id="uptime" class="plugin" ng-include src="'/mgcmon/html/plugins/uptime.html'"></section>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="hidden-xs hidden-sm hidden-md col-lg-3" ng-show="show.quick_look">
+            <section id="quicklook" class="plugin" ng-include src="'/mgcmon/html/plugins/quicklook.html'"></section>
+        </div>
+    </div>
+</div>
+</div></div>
+<!--    <div class="row">
+        <div class="col-sm-6 sidebar" ng-show="show.sidebar">
+            <div class="table">
+                <section id="network" class="plugin table-row-group" ng-show="show.network" ng-include src="'/mgcmon/html/plugins/network.html'"></section>
+                <section id="diskio" class="plugin table-row-group" ng-show="show.diskio" ng-include src="'/mgcmon/html/plugins/diskio.html'"></section>
+                <section id="fs" class="plugin table-row-group" ng-show="show.fs" ng-include src="'/mgcmon/html/plugins/fs.html'"></section>
+                <section id="raid" class="plugin table-row-group" ng-show="statsRaid.hasDisks()" ng-include src="'/mgcmon/html/plugins/raid.html'"></section>
+                <section id="sensors" class="plugin table-row-group" ng-show="show.sensors && statsSensors.sensors.length > 0" ng-include src="'/mgcmon/html/plugins/sensors.html'"></section>
+            </div>
+        </div>
+        <div class="col-sm-18">
+            <section id="containers" class="plugin" ng-show="statsDocker.containers.length && show.docker_stats" ng-include src="'/mgcmon/html/plugins/docker.html'"></section>
+            <section id="alerts" ng-show="show.alert" ng-include src="'/mgcmon/html/plugins/alerts.html'"></section>
+            <section id="alert" class="plugin" ng-show="show.alert" ng-include src="'/mgcmon/html/plugins/alert.html'"></section>
+            <div ng-show="show.process_stats">
+                <section id="processcount" class="plugin" ng-include src="'/mgcmon/html/plugins/processcount.html'"></section>
+                <div class="row">
+                    <div class="col-lg-18">
+                        <section id="monitor" class="plugin" ng-include src="'/mgcmon/html/plugins/monitor.html'"></section>
+                    </div>
+                </div>
+                <section id="processlist" class="plugin" ng-include src="'/mgcmon/html/plugins/processlist.html'"></section>
+            </div>
+            <div ng-show="!show.process_stats">PROCESSES DISABLED (press 'z' to display)</div>
+        </div>
+    </div>
+</div>-->
