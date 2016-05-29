@@ -89,13 +89,14 @@
   </thead>
   <tbody>
   <% @relays.each do |relay| %>
+   <% rstatus = getrelaystatus(relay.id) %>
     <tr>
       <td><i class='fa fa-sitemap'></i> <strong><%= relay.name %></strong></td>
       <td><%= relay.localname %></td>
       <td><%= relay.place %></td>
       <td><%= relay.masterip %></td>
       <td><%= relay.description %></td>
-      <td><strong><%= `curl http://#{relay.masterip}/#{relay.localname}/status` %></strong></td>
+      <td><strong><%= rstatus %></strong></td>
 <td>
 <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Modal<%= relay.id %>"><i class="fa fa-eye"></i> View </a>
 <div class="modal inmodal fade" id="Modal<%= relay.id %>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -131,7 +132,7 @@
 </div>
 <div class="form-group">
 <label>Status</label>
-<input type="text" name="email" placeholder="Enter text" class="form-control" value="<%= `curl http://#{relay.masterip}/#{relay.localname}/status` %>">
+<input type="text" name="email" placeholder="Enter text" class="form-control" value="<%= rstatus %>">
 </div>
 </fieldset>
 </div>

@@ -1,6 +1,6 @@
 class Relay
   # include Jsonable
-  attr_accessor :id, :name, :localname, :description, :place, :masterip
+  attr_accessor :id, :name, :localname, :fimage, :description, :place, :masterip
 
   #@@salt = 'rYeGvzOG2Df0gpq8'
   #

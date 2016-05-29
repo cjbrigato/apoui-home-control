@@ -17,20 +17,23 @@
 <!--        <div class="wrapper wrapper-content"> -->
 <div class="row">
   <% @relays.each do |relay| %>
-<div id="divrelay<%=relay.id%>" class="col-lg-12 animated slideInRight" onClick="return switchrelay(<%= relay.id %>)">
- <% if `curl http://#{relay.masterip}/#{relay.localname}/status` == "ON" %>
-                <div class="widget yellow-bg text-center">
- <% elsif `curl http://#{relay.masterip}/#{relay.localname}/status` == "OFF" %>
-                <div class="widget gray-bg text-center">
+<% rstatus = getrelaystatus(relay.id) %>
+<div id="divrelay<%=relay.id%>" class="col-lg-12 animated slideInRight">
+ <% if rstatus == "ON" %>
+                <div class="widget yellow-bg text-center" onClick="return switchrelay(<%= relay.id %>)">
+ <% elsif rstatus == "OFF" %>
+                <div class="widget gray-bg text-center" onClick="return switchrelay(<%= relay.id %>)">
+ <% else %>
+                 <div class="widget black-bg text-center">
  <%end%>
                     <div class="row">
                         <div class="col-xs-4 faa-parent animated slideInRight">
-                            <i class="fa fa-lightbulb-o fa-5x"></i>
+                            <i class="fa <%=relay.fimage%> fa-5x"></i>
                         </div>
                         <div class="col-xs-8">
                             <h3 class="font-bold no-margins"><%= relay.name %></h3>
                             <small><%= relay.description %></small>
-			  <h2 class="m-xs"><strong><%=`curl http://#{relay.masterip}/#{relay.localname}/status`%></strong></h2>
+			  <h2 class="m-xs"><strong><%=rstatus%></strong></h2>
                         </div>
                     </div>
                 </div>

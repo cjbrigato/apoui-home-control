@@ -1,16 +1,17 @@
- <% if `curl http://#{@lrelay.masterip}/#{@lrelay.localname}/status` == "ON" %>
-                <div id="div<%=@lrelay.name%>" class="widget yellow-bg text-center animated flipInY">
- <% elsif `curl http://#{@lrelay.masterip}/#{@lrelay.localname}/status` == "OFF" %>
-                <div id="div<%=@lrelay.name%>" class="widget gray-bg text-center animated flipInY">
+<% rstatus = getrelaystatus(@lrelay.id) %>
+ <% if rstatus == "ON" %>
+                <div id="div<%=@lrelay.name%>" class="widget yellow-bg text-center animated flipInY" onClick="return switchrelay(<%= @lrelay.id %>)">
+ <% elsif rstatus == "OFF" %>
+                <div id="div<%=@lrelay.name%>" class="widget gray-bg text-center animated flipInY" onClick="return switchrelay(<%= @lrelay.id %>)">
  <%end%>
                     <div class="row">
                         <div class="col-xs-4 faa-parent animated-hover">
-                            <i class="fa fa-lightbulb-o faa-bounce fa-5x"></i>
+                            <i class="fa <%=@lrelay.fimage%> faa-bounce fa-5x"></i>
                         </div>
                         <div class="col-xs-8">
                             <h3 class="font-bold no-margins"><%= @lrelay.name %></h3>
                             <small><%= @lrelay.description %></small>
-			  <h2 class="m-xs"><strong><%=`curl http://#{@lrelay.masterip}/#{@lrelay.localname}/status`%></strong></h2>
+			  <h2 class="m-xs"><strong><%=rstatus%></strong></h2>
                         </div>
                     </div>
                 </div>

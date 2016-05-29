@@ -539,7 +539,7 @@ border: 1px solid #607D8B;
 background: rgba(80, 88, 97, 0.5);
 
   color: #fff;
-  padding: 0px 0px;
+  padding: 10px 10px;
 }
 .top-navigation .navbar-top-links li:last-child {
   margin-right: 0;
@@ -8182,3 +8182,4 @@ body.md-skin {
     display: none;
   }
 }
+

@@ -3,6 +3,7 @@
   id: 1
   name: salon.canap.relay1
   localname: relay1
+  fimage: fa-lightbulb-o
   description: Lumiere GAUCHE Canap Salon
   place: Salon - Canap
   masterip: 192.168.1.42
@@ -10,6 +11,23 @@
   id: 2
   name: salon.canap.relay2
   localname: relay2
+  fimage: fa-lightbulb-o
   description: Lumiere DROITE Canap Salon
   place: Salon - Canap
   masterip: 192.168.1.42
+- !ruby/object:Relay
+  id: 3
+  name: chambre.relay1
+  localname: relay1
+  fimage: fa-lightbulb-o
+  description: Grande Lumiere Chambre (fond gauche)
+  place: Chambre - Fond gauche
+  masterip: 192.168.1.28
+- !ruby/object:Relay
+  id: 4
+  name: chambre.relay2
+  localname: relay2
+  fimage: fa-plug
+  description: Multiprise Generale (Arriere Lit)
+  place: Chambre - arriere-lit
+  masterip: 192.168.1.28

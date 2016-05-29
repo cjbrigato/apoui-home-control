@@ -14,8 +14,8 @@ class APOUIControl < Sinatra::Base
   get '/' do
     #redirect '/login'
     title 'APOUI Home Automation Control'
-    @total_relays="2"
-    @total_controllers="1"
+    @total_relays="4"
+    @total_controllers="2"
     @hostname="architect"
     @ip_address="192.168.1.252"
     @system="Debian GNU/Linux 8"
@@ -31,6 +31,12 @@ class APOUIControl < Sinatra::Base
       erb :relaycontrol
   end
 
+  get '/getrelaystatus/:id' do
+      @rid = params[:id].to_i
+      @status = getrelaystatus(@rid)
+      return @status
+  end
+
   get '/setrelay/:id/:status' do
       #todo check existence et status
       @rid = params[:id].to_i
@@ -39,7 +45,7 @@ class APOUIControl < Sinatra::Base
       @srelay.each do |relay|
         @lrelay = relay
       end
-      `curl http://#{@lrelay.masterip}/#{@lrelay.localname}/#{@status}`
+      `curl -m 1.5 http://#{@lrelay.masterip}/#{@lrelay.localname}/#{@status}`
       "#{@lrelay.name} set to #{@status}"
   end
 
@@ -50,7 +56,7 @@ class APOUIControl < Sinatra::Base
       @srelay.each do |relay|
         @lrelay = relay
       end
-      @istatus = `curl http://#{@lrelay.masterip}/#{@lrelay.localname}/status`
+      @istatus = `curl -m 1.5 http://#{@lrelay.masterip}/#{@lrelay.localname}/status`
       if @istatus == "ON"
         @nstatus = "off"
       elsif @istatus == "OFF"
