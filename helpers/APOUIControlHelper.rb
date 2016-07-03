@@ -21,4 +21,16 @@ module APOUIControlHelper
       return @status
   end
 
+  def getsensorvalue(sensor)
+      @sid = sensor.to_i
+      @ssensor = $sensors.select { |sensor| sensor.id == @sid }
+      @ssensor.each do |sensor|
+        @lsensor = sensor
+      end
+      @value = `curl -m 1.5 http://#{@lsensor.masterip}/temperature|cut -d";" -f2`
+      #if !(@status == "ON" ||  @status == "OFF") then @status = "OUT OF SERVICE"
+      #@value = "UNAVAILABLE" unless @status  =~ /\A(?:OFF|ON)\z/
+      return @value
+  end
+
 end

@@ -1,0 +1,46 @@
+<div class="row wrapper border-bottom white-bg page-heading animated slideInLeft">
+                <div class="col-lg-10">
+                    <h2><span class="fa fa-empire"></span> Sensor Infos</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a class="transit" href="/">Home</a>
+                        </li>
+                        <li class="active">
+                            <strong>Sensor Infos</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+                </div>
+            </div>
+       <div class="wrapper wrapper-content animated slideInRight">
+<!--        <div class="wrapper wrapper-content"> -->
+<div class="row">
+  <% @sensors.each do |sensor| %>
+<% svalue = getsensorvalue(sensor.id) %>
+ <div class="widget navy-bg text-center">
+<div id="divrelay<%=sensor.id%>" class="col-lg-12 animated slideInRight">
+                    <div class="row">
+                        <div class="col-xs-4 faa-parent animated slideInRight">
+                            <i class="fa fa-empire fa-5x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <h3 class="font-bold no-margins"><%= sensor.description %></h3>
+                            <small><%= sensor.name %></small>
+			  <h2 class="m-xs"><strong><%=svalue%></strong></h2>
+                        </div>
+</div>
+                    </div>
+</div>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

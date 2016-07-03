@@ -6,3 +6,4 @@
 #require_relative 'server'
 #require_relative 'subnet'
 require_relative 'relay'
+require_relative 'sensor'

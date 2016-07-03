@@ -15,7 +15,8 @@ class APOUIControl < Sinatra::Base
     #redirect '/login'
     title 'APOUI Home Automation Control'
     @total_relays="4"
-    @total_controllers="2"
+    @total_controllers="4"
+    @total_sensors="2"
     @hostname="architect"
     @ip_address="192.168.1.252"
     @system="Debian GNU/Linux 8"
@@ -30,11 +31,25 @@ class APOUIControl < Sinatra::Base
       @relays = $relays
       erb :relaycontrol
   end
+ 
+  get '/sensorinfo/?' do
+      @do = 'yes'
+      return erb :sensorinfo unless @do == 'yes'
+      @q = params[:q]
+      @sensors = $sensors
+      erb :sensorinfo
+  end
 
   get '/getrelaystatus/:id' do
       @rid = params[:id].to_i
       @status = getrelaystatus(@rid)
       return @status
+  end
+
+  get '/getsensorvalue/:id' do
+      @sid = params[:id].to_i
+      @value = getsensorvalue(@sid)
+      return @value
   end
 
   get '/setrelay/:id/:status' do
@@ -82,6 +97,14 @@ class APOUIControl < Sinatra::Base
       @q = params[:q]
       @relays = $relays
       erb :relays
+  end
+
+  get '/sensors/?' do
+      @do = 'yes'
+      return erb :sensors unless @do == 'yes'
+      @q = params[:q]
+      @sensors = $sensors
+      erb :sensors
   end
 
   get '/houseview/?' do

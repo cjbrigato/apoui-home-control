@@ -1,0 +1,17 @@
+---
+- !ruby/object:Sensor
+  id: 1
+  name: salon.temp.sensor1
+  localname: temp.sensor1
+  type: temperature
+  description: Temperature Salon
+  place: Salon - Meuble Tv
+  masterip: 192.168.1.18
+- !ruby/object:Sensor
+  id: 2
+  name: chambre.temp.sensor1
+  localname: sensor1
+  type: temperature
+  description: Temperature Chambre
+  place: Chambre - Table de nuit Colin
+  masterip: 192.168.1.16
