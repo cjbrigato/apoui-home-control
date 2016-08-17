@@ -31,3 +31,11 @@
   description: Chambre - Veilleuse Anaïs <3
   place: Chambre - arriere-lit
   masterip: 192.168.1.28
+- !ruby/object:Relay
+  id: 5
+  name: salon.meubletv.relay1
+  localname: relay1
+  fimage: fa-television
+  description: TV / Wii / FREEBOX (Combo)
+  place: Salon - Meuble TV
+  masterip: 192.168.1.6
