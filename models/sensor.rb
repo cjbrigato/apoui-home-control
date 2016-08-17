@@ -8,7 +8,7 @@
 #  masterip: 192.168.1.16
 class Sensor
   # include Jsonable
-  attr_accessor :id, :name, :localname, :type, :description, :place, :masterip
+  attr_accessor :id, :name, :localname, :fimage, :type, :description, :place, :masterip
 
   def to_json(*a)
     result = {}

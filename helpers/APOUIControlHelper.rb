@@ -27,7 +27,11 @@ module APOUIControlHelper
       @ssensor.each do |sensor|
         @lsensor = sensor
       end
-      @value = `curl -m 1.5 http://#{@lsensor.masterip}/temperature|cut -d";" -f2`
+      if (@lsensor.type == "temperature")
+        @value = `curl -m 1.5 http://#{@lsensor.masterip}/temperature|cut -d";" -f2`
+      elsif (@lsensor.type == "doorlock")
+        @value = `curl -m 1.5 http://#{@lsensor.masterip}/status|cut -d";" -f2`
+      end
       #if !(@status == "ON" ||  @status == "OFF") then @status = "OUT OF SERVICE"
       #@value = "UNAVAILABLE" unless @status  =~ /\A(?:OFF|ON)\z/
       return @value

@@ -3,6 +3,7 @@
   id: 1
   name: salon.temp.sensor1
   localname: temp.sensor1
+  fimage: fa-empire
   type: temperature
   description: Temperature Salon
   place: Salon - Meuble Tv
@@ -11,7 +12,17 @@
   id: 2
   name: chambre.temp.sensor1
   localname: sensor1
+  fimage: fa-empire
   type: temperature
   description: Temperature Chambre
   place: Chambre - Table de nuit Colin
   masterip: 192.168.1.16
+- !ruby/object:Sensor
+  id: 3
+  name: door.lock.magnet.sensor
+  localname: sensor
+  fimage: fa-lock
+  type: doorlock
+  description: Door Lock Status
+  place: Porte d'entree
+  masterip: 192.168.1.24
