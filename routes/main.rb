@@ -24,6 +24,18 @@ class APOUIControl < Sinatra::Base
     erb :home
   end
 
+  get '/doorlog/add/:message' do
+      @date = `date | tr -d '\n'`
+      @message = params[:message]
+      `echo "[#{@date}] - Door is now #{@message}" >> logs/doorlock.log`
+  end 
+
+  get '/doorlog/log/?' do
+      @logs = `tac logs/doorlock.log`
+      erb :doorlog
+  end
+	
+
   get '/relaycontrol/?' do
       @do = 'yes'
       return erb :relaycontrol unless @do == 'yes'
