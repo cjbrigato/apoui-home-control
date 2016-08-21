@@ -24,6 +24,18 @@ class APOUIControl < Sinatra::Base
     erb :home
   end
 
+  get '/rfid/tagaction/:tagid' do
+      @tagid = params[:tagid].upcase 
+      @exec = `bash rfid/scripts/#{@tagid}.sh`
+      @date = `date | tr -d '\n'`
+      @log = `echo "[#{@date}] - #{@tagid} Tagaction" >> logs/rfid.log`  
+  end
+
+  get '/rfid/security/status' do
+      @secstatus = `cat rfid/security.status`
+      return @secstatus
+  end
+
   get '/doorlog/add/:message' do
       @date = `date | tr -d '\n'`
       @message = params[:message]
