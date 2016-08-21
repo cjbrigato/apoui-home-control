@@ -19,6 +19,24 @@
   masterip: 192.168.1.16
 - !ruby/object:Sensor
   id: 3
+  name: salon.humid.sensor1
+  localname: humid.sensor1
+  fimage: fa-tint
+  type: humidity
+  description: Humidite Salon
+  place: Salon - Meuble Tv
+  masterip: 192.168.1.18
+- !ruby/object:Sensor
+  id: 4
+  name: chambre.humid.sensor1
+  localname: sensor1
+  fimage: fa-tint
+  type: humidity
+  description: Humidite Chambre
+  place: Chambre - Table de nuit Colin
+  masterip: 192.168.1.16
+- !ruby/object:Sensor
+  id: 5
   name: door.lock.magnet.sensor
   localname: sensor
   fimage: fa-lock

@@ -29,6 +29,8 @@ module APOUIControlHelper
       end
       if (@lsensor.type == "temperature")
         @value = `curl -m 1.5 http://#{@lsensor.masterip}/temperature|cut -d";" -f2`
+      elsif (@lsensor.type == "humidity")
+        @value = `curl -m 1.5 http://#{@lsensor.masterip}/humidity|cut -d";" -f2`
       elsif (@lsensor.type == "doorlock")
         @value = `curl -m 1.5 http://#{@lsensor.masterip}/status|cut -d";" -f2`
       end
