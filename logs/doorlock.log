@@ -41,3 +41,23 @@
 [Sun Aug 21 19:09:38 CEST 2016] - Door is now CLOSE
 [Mon Aug 22 01:01:36 CEST 2016] - Door is now OPEN
 [Mon Aug 22 01:01:36 CEST 2016] - Door is now CLOSE
+[Mon Aug 22 05:43:47 CEST 2016] - Door is now OPEN
+Security is OFF : Nothing to do
+[Mon Aug 22 05:43:51 CEST 2016] - Door is now CLOSE
+[Mon Aug 22 05:44:00 CEST 2016] - Door is now OPEN
+SECURITY IS ON : PROCEDURE ENGAGED !
+-SECURITY- Waiting 15 SEC FOR DEAC...
+[Mon Aug 22 05:44:02 CEST 2016] - Door is now CLOSE
+[Mon Aug 22 05:51:54 CEST 2016] - Door is now OPEN
+-SECURITY- Security is OFF : Nothing to do
+[Mon Aug 22 05:51:57 CEST 2016] - Door is now CLOSE
+[Mon Aug 22 05:52:02 CEST 2016] - Door is now OPEN
+-SECURITY- SECURITY IS ON : PROCEDURE ENGAGED !
+-SECURITY- Waiting 15 SEC FOR DEAC...
+[Mon Aug 22 05:52:08 CEST 2016] - Door is now CLOSE
+-SECURITY- Security DISENGAGED : Return to Normal
+[Mon Aug 22 05:52:30 CEST 2016] - Door is now OPEN
+-SECURITY- SECURITY IS ON : PROCEDURE ENGAGED !
+-SECURITY- Waiting 15 SEC FOR DEAC...
+[Mon Aug 22 05:52:44 CEST 2016] - Door is now CLOSE
+-SECURITY- SECURITY BREACH CONFIRMED. PROCEED NOW !

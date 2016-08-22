@@ -3,7 +3,7 @@
 CURMOV=$1
 TAG="49C26985"
 HOST="control.maison.apoui.net"
-MOVFILE="49C26985.lastmov"
+MOVFILE="$TAG.lastmov"
 SECSTATF="../security.status"
 
 CDIR=`dirname $0`

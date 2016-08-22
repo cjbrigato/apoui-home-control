@@ -40,6 +40,9 @@ class APOUIControl < Sinatra::Base
       @date = `date | tr -d '\n'`
       @message = params[:message]
       `echo "[#{@date}] - Door is now #{@message}" >> logs/doorlock.log`
+      if @message =~ /^OPEN/ 
+         @spawn = `rfid/security-process.sh &`
+     end
   end 
 
   get '/doorlog/log/?' do

@@ -39,6 +39,26 @@
                     </div>
 </div>
 <% end %>
+<% secstatus = getsecstatus %>
+<% if secstatus =~ /^OFF/ %>
+<div class="widget green-bg text-center">
+<% elsif secstatus =~ /^ON/ %>
+<div class="widget red-bg text-center">
+<% end %>
+<div id="divsecstatus" class="col-lg-12 animated slideInRight">
+                    <div class="row">
+                        <div class="col-xs-4 faa-parent animated slideInRight">
+                            <i class="fa fa-user-secret fa-5x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <h3 class="font-bold no-margins">Home Security</h3>
+                            <small>Security.Switch</small>
+                          <h2 class="m-xs"><strong><%=secstatus%></strong></h2>
+                        </div>
+</div>
+                    </div>
+</div>
+
 </div>
 </div>
 </div>

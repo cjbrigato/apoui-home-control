@@ -39,4 +39,9 @@ module APOUIControlHelper
       return @value
   end
 
+  def getsecstatus
+    @status = `curl -m 1.5 http://control.maison.apoui.net/rfid/security/status`
+    return @status
+  end
+
 end
