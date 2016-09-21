@@ -39,3 +39,12 @@
   description: TV / Wii / FREEBOX (Combo)
   place: Salon - Meuble TV
   masterip: 192.168.1.6
+- !ruby/object:Relay
+  id: 6
+  name: studio.gauche.relay1
+  localname: relay1
+  fimage: fa-music
+  description: Studio lumière Gauche
+  place: Studio - Cote Gauche (Piano)
+  masterip: 192.168.1.25
+
