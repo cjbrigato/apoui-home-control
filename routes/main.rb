@@ -14,8 +14,8 @@ class APOUIControl < Sinatra::Base
   get '/' do
     #redirect '/login'
     title 'APOUI Home Automation Control'
-    @total_relays="5"
-    @total_controllers="6"
+    @total_relays="6"
+    @total_controllers="7"
     @total_sensors="3"
     @hostname="architect"
     @ip_address="192.168.1.252"
