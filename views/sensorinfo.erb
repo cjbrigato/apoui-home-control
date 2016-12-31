@@ -18,6 +18,7 @@
 <div class="row">
   <% @sensors.each do |sensor| %>
 <% svalue = getsensorvalue(sensor.id) %>
+<div id="divrelay<%=sensor.id%>" class="col-lg-12 animated slideInRight">
 <% if svalue  =~ /^CLOSE/ %>
 <div class="widget green-bg text-center">
 <% elsif svalue  =~ /^OPEN/ %>
@@ -25,7 +26,7 @@
 <% else %> 
  <div class="widget navy-bg text-center">
 <% end %>
-<div id="divrelay<%=sensor.id%>" class="col-lg-12 animated slideInRight">
+<!-- <div id="divrelay<%=sensor.id%>" class="col-lg-12 animated slideInRight"> -->
                     <div class="row">
                         <div class="col-xs-4 faa-parent animated slideInRight">
                             <i class="fa <%=sensor.fimage%> fa-5x"></i>
@@ -39,13 +40,13 @@
                     </div>
 </div>
 <% end %>
+<div id="divsecstatus" class="col-lg-12 animated slideInRight">
 <% secstatus = getsecstatus %>
 <% if secstatus =~ /^OFF/ %>
 <div class="widget green-bg text-center">
 <% elsif secstatus =~ /^ON/ %>
 <div class="widget red-bg text-center">
 <% end %>
-<div id="divsecstatus" class="col-lg-12 animated slideInRight">
                     <div class="row">
                         <div class="col-xs-4 faa-parent animated slideInRight">
                             <i class="fa fa-user-secret fa-5x"></i>
@@ -58,7 +59,6 @@
 </div>
                     </div>
 </div>
-
 </div>
 </div>
 </div>

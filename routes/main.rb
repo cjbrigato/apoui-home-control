@@ -46,7 +46,7 @@ class APOUIControl < Sinatra::Base
   end 
 
   get '/doorlog/log/?' do
-      @logs = `tac logs/doorlock.log`
+      @logs = `tac logs/doorlock.log | head -n50`
       erb :doorlog
   end
 	
