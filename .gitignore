@@ -1,3 +1,4 @@
 *.mp4
 *.lock
 *.pid
+passenger.42420.log
