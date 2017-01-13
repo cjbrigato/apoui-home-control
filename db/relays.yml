@@ -47,4 +47,12 @@
   description: Studio lumière Gauche
   place: Studio - Cote Gauche (Piano)
   masterip: 192.168.1.25
+- !ruby/object:Relay
+  id: 7
+  name: chambre.relay3
+  localname: relay1
+  fimage: fa-moon-o
+  description: Chambre - Veilleuse Colin <3
+  place: Chambre - arriere-lit
+  masterip: 192.168.1.39
 
