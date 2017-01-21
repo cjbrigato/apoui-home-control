@@ -1,0 +1,17 @@
+{ 
+  'Type' : 'Collection',
+  'Resource' : 'Sensor',
+  'Objects' : { <% @sensors.each do |sensor| %> <% svalue = getsensorvalue(sensor.id) %>
+    'sensor' : {
+      'id' : '<%= sensor.id %>',
+      'name' : '<%= sensor.name %>',
+      'localname' : '<%= sensor.localname %>',
+      'place' : '<%= sensor.place %>',
+      'type'  : '<%= sensor.type %>',
+      'relay' : '<%= sensor.masterip %>',
+      'description' : '<%= sensor.description %>',
+      'status' : '<%= svalue %>' 
+<% if sensor.equal?(@sensors.last) %>      }
+<% else %>      },<%end%>
+      <% end %>}
+}

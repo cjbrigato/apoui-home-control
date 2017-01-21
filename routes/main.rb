@@ -11,6 +11,21 @@ class APOUIControl < Sinatra::Base
     # placeholder
   end
 
+  namespace '/api' do
+    get '/relays/?' do
+        content_type :json
+        @relays = $relays
+        erb :apirelays, layout: false
+    end
+
+    get '/sensors/?' do
+        content_type :json
+        @sensors = $sensors
+        erb :apisensors, layout: false
+    end
+  end
+
+
   get '/' do
     #redirect '/login'
     title 'APOUI Home Automation Control'

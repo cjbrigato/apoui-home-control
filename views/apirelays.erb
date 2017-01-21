@@ -1,0 +1,17 @@
+{ 
+  'Type' : 'Collection',
+  'Resource' : 'Relay',
+  'Objects' : {      <% @relays.each do |relay| %>
+    'relay' : {      <% rstatus = getrelaystatus(relay.id) %>
+      'id' : '<%= relay.id %>',
+      'name' : '<%= relay.name %>',
+      'localname' : '<%= relay.localname %>',
+      'place' : '<%= relay.place %>',
+      'relay' : '<%= relay.masterip %>',
+      'description' : '<%= relay.description %>',
+      'status' : '<%= rstatus %>' 
+<% if relay.equal?(@relays.last) %>      }
+<% else %>      },<%end%>
+      <% end %>}
+}
+     
