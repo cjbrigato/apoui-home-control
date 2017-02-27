@@ -7,7 +7,7 @@ class APOUIControl < Sinatra::Base
   #end
 
   before do
-    cache_control max_age: 2
+    cache_control max_age: 10
     # placeholder
   end
 
@@ -102,7 +102,7 @@ class APOUIControl < Sinatra::Base
       @srelay.each do |relay|
         @lrelay = relay
       end
-      `curl -m 1.5 http://#{@lrelay.masterip}/#{@lrelay.localname}/#{@status}`
+      `curl --connect-timeout 0.2 http://#{@lrelay.masterip}/#{@lrelay.localname}/#{@status}`
       "#{@lrelay.name} set to #{@status}"
   end
 
@@ -113,13 +113,13 @@ class APOUIControl < Sinatra::Base
       @srelay.each do |relay|
         @lrelay = relay
       end
-      @istatus = `curl -m 1.5 http://#{@lrelay.masterip}/#{@lrelay.localname}/status`
+      @istatus = `curl --connect-timeout 0.2 http://#{@lrelay.masterip}/#{@lrelay.localname}/status`
       if @istatus == "ON"
         @nstatus = "off"
       elsif @istatus == "OFF"
         @nstatus = "on"
       end
-      `curl http://#{@lrelay.masterip}/#{@lrelay.localname}/#{@nstatus}`
+      `curl --connect-timeout 0.2 http://#{@lrelay.masterip}/#{@lrelay.localname}/#{@nstatus}`
       "#{@lrelay.name} SWITCHED to #{@nstatus}"
   end
 

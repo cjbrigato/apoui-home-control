@@ -1733,7 +1733,7 @@ a.DTTT_button:hover:not(.DTTT_disabled) {
 }
 /* WIDGETS */
 .widget {
-  border-radius: 10px;
+  border-radius: 1px;
   padding: 15px 20px;
   margin-bottom: 10px;
   margin-top: 0px;
@@ -3266,7 +3266,8 @@ body {
   font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 /*  background-color: rgba(132, 162, 193, 0.89); */
-background-color: rgba(75, 100, 136, 0.33);
+/*background-color: rgba(75, 100, 136, 0.33);*/
+background-color: #607D8B;
   font-size: 13px;
   /*color: #676a6c;/* color: #1fa2c7;*/
   overflow-x: hidden;
