@@ -41,11 +41,11 @@
   masterip: 192.168.1.6
 - !ruby/object:Relay
   id: 6
-  name: studio.gauche.relay1
+  name: pitiburo.porte.relay1
   localname: relay1
-  fimage: fa-music
-  description: Studio lumière Gauche
-  place: Studio - Cote Gauche (Piano)
+  fimage: fa-camera
+  description: Pitiburo - Cote Porte
+  place: Pitiburo - Cote Porte 
   masterip: 192.168.1.25
 - !ruby/object:Relay
   id: 7

@@ -1,12 +1,12 @@
-  [      <% @relays.each do |relay| %>
+{ "relays" : [      <% @relays.each do |relay| %>
    {       <% rstatus = getrelaystatus(relay.id) %>
-      "id" : "<%= relay.id %>",
-      "name" : "<%= relay.name %>",
-      "localname" : "<%= relay.localname %>",
-      "place" : "<%= relay.place %>",
-      "masterip" : "<%= relay.masterip %>",
-      "description" : "<%= relay.description %>",
-      "status" : "<%= rstatus %>" 
+      "id" : <%= relay.id %>,
+      "name" : "<%= relay.name %> " ,
+      "localname" : "<%= relay.localname %> " ,
+      "place" : "<%= relay.place %> " ,
+      "masterip" : "<%= relay.masterip %> " ,
+      "description" : "<%= relay.description %> " ,
+      "status" : "<%= rstatus %> " 
 <% if relay.equal?(@relays.last) %>      }
 <% else %>      },<%end%>
-      <% end %>]
+      <% end %>] }

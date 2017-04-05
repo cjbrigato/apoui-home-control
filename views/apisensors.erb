@@ -1,14 +1,14 @@
-   [ <% @sensors.each do |sensor| %> <% svalue = getsensorvalue(sensor.id) %>
+ { "sensors" : [ <% @sensors.each do |sensor| %> <% svalue = getsensorvalue(sensor.id) %>
     {
-      "id" : <%= sensor.id %>,
-      "name" : "<%= sensor.name %>",
-      "localname" : "<%= sensor.localname %>",
-      "place" : "<%= sensor.place %>",
-      "type"  : "<%= sensor.type %>",
-      "masterip" : "<%= sensor.masterip %>",
-      "description" : "<%= sensor.description %>",
-      "status" : "<%= svalue.gsub(/\n/,"") %>" 
+      "id" : <%= sensor.id %> ,
+      "name" : "<%= sensor.name %> " ,
+      "localname" : "<%= sensor.localname %> " ,
+      "place" : "<%= sensor.place %> " ,
+      "type"  : "<%= sensor.type %> " ,
+      "masterip" : "<%= sensor.masterip %> " ,
+      "description" : "<%= sensor.description %> " ,
+      "status" : "<%= svalue.gsub(/\n/,"") %> " 
 <% if sensor.equal?(@sensors.last) %>      }
 <% else %>      },<%end%>
-      <% end %>]
+      <% end %>] }
 
