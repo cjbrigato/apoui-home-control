@@ -1,0 +1,56 @@
+#!/bin/bash
+#IP=$1
+#USER=$2
+#PASSWORD=$3
+#PORT=$4 do test
+
+# creds format
+# identifierNN:dec_ipv4:userstring:pwdstring:kmportint:vportint
+# srvblabla:1.2.3.4:root:superpwd2323fff:7578:7578
+#CD="CocoaDialog.app/Contents/MacOS/CocoaDialog"
+    
+#    rv=`$CD yesno-msgbox --string-output`
+#    $CD ok-msgbox --no-cancel --text "You pressed $rv"
+
+get_script_dir () {
+     SOURCE="${BASH_SOURCE[0]}"
+     # While $SOURCE is a symlink, resolve it
+     while [ -h "$SOURCE" ]; do
+          DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+          SOURCE="$( readlink "$SOURCE" )"
+          # If $SOURCE was a relative symlink (so no "/" as prefix, need to resolve it relative to the symlink base directory
+          [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+     done
+     DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+     echo "$DIR"
+}
+cd $(get_script_dir)
+
+
+CFILE="catfile"
+VERSION=0.1
+ID=$1
+function helptext {
+cat $CFILE | cut -d':' -f1
+}
+
+[[ $@ ]] || { helptext; exit 1; }
+
+CREDS='cat '$CFILE' |grep '$ID' | cut -d":" -f'
+RELAYN=`sh -c "$CREDS 1"`
+RELAYID=`sh -c "$CREDS 2"`
+
+
+
+# echo "::Usage $0 ip user password" #[port]
+echo ":: - Usage: $0 identifier"
+echo ":::: - identifier: from $CFILE file"
+echo ":::: - format : identifierNN:dec_ipv4:userstring:pwdstring:kmportint:vportint"
+echo "::::          : srvblabla:1.2.3.4:root:superpwd2323fff:7578:7578"
+echo ""
+
+echo "~> Booting Up! \n"
+#sleep "2"
+
+curl http://control.maison.apoui.net/switchrelay/$RELAYID
+

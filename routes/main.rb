@@ -51,6 +51,15 @@ class APOUIControl < Sinatra::Base
       return @secstatus
   end
 
+  get '/apoui-bin/' do
+	@spawn =`apouictl/apouictl`
+  	return @spawn
+  end
+  get '/apoui-bin/:id' do
+	@spawn =`apouictl/apouictl #{params[:id]}`
+	return @spawn
+  end
+
   get '/doorlog/add/:message' do
       @date = `date | tr -d '\n'`
       @message = params[:message]
